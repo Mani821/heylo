@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:heylo/screens/home/homepage.dart';
+import 'package:flutter/services.dart';
 import 'package:heylo/screens/splash.dart';
+import 'const/app_colors.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await SystemChrome.setEnabledSystemUIMode(SystemUiMode.edgeToEdge);
   runApp(const MyApp());
 }
 
@@ -14,14 +17,16 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        scaffoldBackgroundColor: Color(0xFFeaf4f4),
+        scaffoldBackgroundColor: bgColor,
         appBarTheme: AppBarTheme(
+          scrolledUnderElevation: 0,
+          centerTitle: true,
           titleTextStyle: TextStyle(
             fontFamily: 'Bungee',
             fontSize: 20,
-            color: Color(0xFFeaf4f4),
+            color: bgColor,
           ),
-          backgroundColor: Color(0xFF14213d),
+          backgroundColor: primaryColor,
         ),
       ),
       home: const Splash(),
